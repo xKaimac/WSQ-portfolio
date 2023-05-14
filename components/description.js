@@ -3,6 +3,9 @@ import styled from "styled-components";
 const Container = styled.div`
     padding-left: 5rem;
     padding-right: 5rem;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;ç
 `
 
 const Text = styled.p`
