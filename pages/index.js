@@ -110,7 +110,7 @@ const Home = ({ categories }) => {
 export async function getStaticProps() {
   try {
     // fetch all categories
-    const categories = await axios.get("http://127.0.0.1:1337/api/categories", { params: { populate: "*" } });
+    const categories = await axios.get("http://wsq-cms.herokuapp.com/api/categories", { params: { populate: "*" } });
     const data = categories.data;
 
     return {

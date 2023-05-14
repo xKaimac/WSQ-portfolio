@@ -151,7 +151,7 @@ const CategoryPage = ({ category }) => {
 };      
 
 export async function getStaticPaths() {
-  const categories = await axios.get("http://127.0.0.1:1337/api/categories", {params:{ populate: "*" }});
+  const categories = await axios.get("http://wsq-cms.herokuapp.com/api/categories", {params:{ populate: "*" }});
   const paths = categories.data.data.map((category) => ({
     params: { link: category.attributes.link },
   }));
@@ -162,7 +162,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { link } = params;
-  const result = await axios.get('http://127.0.0.1:1337/api/categories', {params:{ populate: "*"}});
+  const result = await axios.get('http://wsq-cms.herokuapp.com/api/categories', {params:{ populate: "*"}});
   const categories = result.data.data; 
   const category = categories.find((p) => p.attributes.link === link);
   console.log(category.attributes.images);
