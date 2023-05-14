@@ -11,6 +11,7 @@ const ImageList = styled.ul`
   padding: 0;
   list-style: none;
   margin:5rem;
+  margin-left: 20vw;
 `;
 
 const ImageItem = styled.li`
@@ -119,7 +120,7 @@ const CategoryPage = ({ category }) => {
       />
       <div>
         <Title text={category.attributes.title}/>
-        <Description text={category.attributes.description}/>
+        {/* <Description text={category.attributes.description}/> */}
         <ImageList>
           {category.attributes.images.data.map((image, index) => (
             <ImageItem key={image.attributes.id}>
@@ -130,7 +131,7 @@ const CategoryPage = ({ category }) => {
                 />
               </ImageItem>
             ))}
-          </ImageList>
+        </ImageList>
         </div>
         {isOpen && (
           <Lightbox onClick={() => setIsOpen(false)}>
@@ -155,17 +156,17 @@ export async function getStaticPaths() {
   const paths = categories.data.data.map((category) => ({
     params: { link: category.attributes.link },
   }));
+  console.log(categories.data.data[0].attributes.link);
 
   return { paths, fallback: false };
 }
-
 
 export async function getStaticProps({ params }) {
   const { link } = params;
   const result = await axios.get('http://wsq-cms.herokuapp.com/api/categories', {params:{ populate: "*"}});
   const categories = result.data.data; 
   const category = categories.find((p) => p.attributes.link === link);
-  console.log(category.attributes.images);
+
   return {
     props: { category }
   };

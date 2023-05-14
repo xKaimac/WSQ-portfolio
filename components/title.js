@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-    
+padding:0;
+    margin-left: 20vw;
 `
 const Text = styled.h1`
     font-size: 5rem;

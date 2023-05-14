@@ -5,7 +5,7 @@ const Container = styled.div`
     padding-right: 5rem;
     max-width: 50%;
     margin-left: auto;
-    margin-right: auto;ç
+    margin-right: auto;
 `
 
 const Text = styled.p`
